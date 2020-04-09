@@ -13,12 +13,14 @@ namespace Character
         delegate void RepeatAiAction();
         private RepeatAiAction AIAction;
         private int RepeatAims = 2000;
+        [HideInInspector]
+        public Vector3 exitPoint;
         //TODO: events like jump, startAttack or something else
         //public EventHandler 
 
         private void Awake()
         {
-			_presenter = new PlayerPresenter (this, null);//this.GetComponent<PlayerAI>());
+			_presenter = new PlayerPresenter (this);
             _presenter.Init();
             InitComponents();
 
@@ -56,7 +58,13 @@ namespace Character
         }
 
         public override void Move()
-        {   //rotate
+        {
+#if DEBUG_MODE
+            Debug.Log("Move");
+#endif
+            Move(exitPoint);
+            return;
+            //TODO: rotate by direction
             transform.Rotate(0, Input.GetAxis("Horizontal") * _presenter.speed, 0);
             //now moving only forward
             Vector3 moving = transform.TransformDirection(Vector3.forward);
@@ -66,10 +74,14 @@ namespace Character
         public override void Move(Vector3 targetPoint)
         {
             //rotate
-            transform.Rotate(0, Input.GetAxis("Horizontal") * _presenter.speed, 0);
+            var moveDirection = transform.TransformDirection(Vector3.forward) * _presenter.speed;
+
+            var offset = targetPoint - transform.position;
+            
+            /*transform.Rotate(0, -1 * _presenter.speed, 0);
             //now moving only forward
             Vector3 moving = transform.TransformDirection(Vector3.forward);
-            _cController.SimpleMove(moving);
+            _cController.SimpleMove(moving);*/
         }
 
         public override void Backoff()

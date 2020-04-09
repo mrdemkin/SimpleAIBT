@@ -1,18 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class EnemyFactory : MonoBehaviour
+namespace ObjectsGenerator
 {
-    // Start is called before the first frame update
-    void Start()
+    public class EnemyFactory : Factory
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

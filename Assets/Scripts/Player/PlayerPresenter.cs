@@ -23,7 +23,7 @@ namespace Character
 		}
 
         //TODO: interface?
-        public PlayerPresenter(PlayerView view, PlayerAI ai)
+        public PlayerPresenter(PlayerView view)
         {
             _view = view;
 			_model = new PlayerModel();
