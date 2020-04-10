@@ -25,10 +25,10 @@ namespace BaseAI
         {
             //TODO: Implement!
 #if DEBUG_MODE
-#if UNITY_2018_1_OR_NEWER
-            UnityEngine.Debug.Log("isUnderAttack " + cModel.isUnderAttack());
+#if UNITY_2017_4_OR_NEWER
+			UnityEngine.Debug.Log($"isUnderAttack {cModel.isUnderAttack()}");
 #else
-            UnityEngine.Debug.Log($"isUnderAttack {cModel.isUnderAttack()}");
+            UnityEngine.Debug.Log("isUnderAttack " + cModel.isUnderAttack());
 #endif
 #endif
             return cModel.isUnderAttack() ? States.SUCCESS : States.FAILED;
@@ -47,10 +47,10 @@ namespace BaseAI
         {
             //TODO: Implement!
 #if DEBUG_MODE
-#if UNITY_2018_1_OR_NEWER
-            UnityEngine.Debug.Log("isNotUnderAttack " + cModel.isUnderAttack());
+#if UNITY_2017_4_OR_NEWER
+			UnityEngine.Debug.Log($"isNotUnderAttack {cModel.isUnderAttack()}");
 #else
-            UnityEngine.Debug.Log($"isNotUnderAttack {cModel.isUnderAttack()}");
+            UnityEngine.Debug.Log("isNotUnderAttack " + cModel.isUnderAttack());            
 #endif
 #endif
             return cModel.isUnderAttack() ? States.FAILED : States.SUCCESS;
@@ -61,10 +61,10 @@ namespace BaseAI
         {
             //TODO: Implement!
 #if DEBUG_MODE
-#if UNITY_2018_1_OR_NEWER
-            UnityEngine.Debug.Log("moveToExitAction " + cModel.isUnderAttack());
+#if UNITY_2017_4_OR_NEWER
+			UnityEngine.Debug.Log($"moveToExitAction {cModel.isUnderAttack()}");
 #else
-            UnityEngine.Debug.Log($"moveToExitAction {cModel.isUnderAttack()}");
+            UnityEngine.Debug.Log("moveToExitAction " + cModel.isUnderAttack());
 #endif
 #endif
             return cModel.isUnderAttack() ? States.FAILED : States.SUCCESS;
@@ -74,10 +74,10 @@ namespace BaseAI
         {
             //TODO: Implement!
 #if DEBUG_MODE
-#if UNITY_2018_1_OR_NEWER
-            UnityEngine.Debug.Log("canMoveAction " + cModel.canMove);
+#if UNITY_2017_4_OR_NEWER
+			UnityEngine.Debug.Log($"canMoveAction {cModel.canMove}");
 #else
-            UnityEngine.Debug.Log($"canMoveAction {cModel.canMove}");
+            UnityEngine.Debug.Log("canMoveAction " + cModel.canMove);            
 #endif
 #endif
             return cModel.canMove ? States.SUCCESS : States.FAILED;

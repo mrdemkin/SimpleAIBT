@@ -33,6 +33,9 @@ namespace Character
     [RequireComponent(typeof(CharacterController))]
     public abstract class CharacterView : MonoBehaviour
     {
+		// TODO: new class absctract BasicPlayerView?
+		[HideInInspector]
+		public Vector3 exitPoint;
         // TODO: show in inspector non-public?
         //public Rigidbody _rb;
         //public Collider _collider;

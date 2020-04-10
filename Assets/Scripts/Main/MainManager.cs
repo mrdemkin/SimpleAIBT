@@ -14,6 +14,7 @@ public class MainManager : MonoBehaviour
     private void Init()
     {
         ExitPoint = ExitObject.transform.position;
+        player.exitPoint = ExitPoint;
         playerPresenter = player._presenter;
 
     }

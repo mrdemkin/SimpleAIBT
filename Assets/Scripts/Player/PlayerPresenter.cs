@@ -38,6 +38,7 @@ namespace Character
         public override void Init()
         {
             if (_isInited) return;
+            _model.SetSpeed(1f);
             _isInited = true;
         }
 
@@ -62,6 +63,9 @@ namespace Character
 
         private void SetPlayerAction(AiStates actionCode)
         {
+#if DEBUG_MODE
+            UnityEngine.Debug.Log($"SetPlayerAction {actionCode}");
+#endif
             switch (actionCode)
             {
                 case AiStates.Idle:
@@ -72,6 +76,7 @@ namespace Character
                     _view.Move();
                     break;
                 case AiStates.Backoff:
+                case AiStates.CounterAttack:
                     _view.Backoff();
                     break;
             }

@@ -60,7 +60,7 @@ namespace Character
 
         public override void SetSpeed(float newValue)
         {
-
+            this.speed = newValue;
         }
 
         public override void SetDefence(float newValue)
