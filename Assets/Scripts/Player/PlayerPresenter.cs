@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using BaseAI;
+using MapScanner;
 
 namespace Character
 {
     public class PlayerPresenter : CharacterPresenter
     {
         PlayerAI AI;
+        SearchForGameobject mapScanner;
 
 		delegate void PlayerActionDelegate();
 		private PlayerActionDelegate playerActionDelegate;
@@ -28,6 +30,7 @@ namespace Character
             _view = view;
 			_model = new PlayerModel();
 			this.AI = new PlayerAI (_model);
+            this.mapScanner = new SearchForGameobject();
             _isInited = false;
             //this.AI = ai;// new PlayerAI();
 			//if (playerActionDelegate == null) {

@@ -49,17 +49,17 @@ namespace Weapons
             Debug.DrawRay(startPosition, direction, Color.blue, 0.2f);
 #endif
             RaycastHit hit;
-            if (Physics.Raycast(startPosition, direction, out hit, attackRange))
-            {
-                if (hit.transform.CompareTag(targetTag))
+                if (Physics.Raycast(startPosition, direction, out hit, attackRange))
                 {
+                    if (hit.transform.CompareTag(targetTag))
+                    {
 #if DEBUG_MODE
-                    Debug.Log($"<color=red>{hit.transform.name} was hit</color>");
+                        Debug.Log($"<color=red>{hit.transform.name} was hit</color>");
 #endif
-                    //TODO: Draw bullet something
-                    return hit.transform.gameObject;
+                        //TODO: Draw bullet something
+                        return hit.transform.gameObject;
+                    }
                 }
-            }
             return null;
         }
     }

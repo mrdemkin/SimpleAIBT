@@ -3,12 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
 using UnityEngine;
+using Weapons;
 
 namespace Character
 {
     //TODO: abstract class Character
     public class PlayerView : CharacterView
     {
+        //TODO: This not for visual presentation!
+        DistantWeapon weapon;
+
         Timer timer;
         delegate void RepeatAiAction();
         private RepeatAiAction AIAction;
@@ -89,18 +93,12 @@ namespace Character
         {
             //TODO: use weapon for this
             //TODO: why it's in visual presentation?
-            int bulletSpeed = 3;
-            Vector3 startPos = this.transform.position;
             Vector3 direction = (attackDirection - this.transform.position).normalized;
-            Debug.DrawRay(startPos, direction, Color.blue, 0.2f);
-            RaycastHit hit;
-            if (Physics.Raycast(startPos, direction, out hit, 20f))
+            GameObject hitObj = weapon.TryAttack(this.transform.position, direction, "Enemy");
+            if (hitObj)
             {
-#if DEBUG_MODE
-                Debug.Log($"<color=red>{hit.transform.name} was hit</color>");
-#endif
+                //TODO: enemy set new hp and others
             }
-
         }
 
         public override void OpenAbilityShield()
