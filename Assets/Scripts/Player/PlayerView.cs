@@ -61,12 +61,6 @@ namespace Character
 			Debug.Log("Move " + exitPoint);
 #endif
             Move(exitPoint);
-            return;
-            //TODO: rotate by direction
-            transform.Rotate(0, Input.GetAxis("Horizontal") * _presenter.speed, 0);
-            //now moving only forward
-            Vector3 moving = transform.TransformDirection(Vector3.forward);
-            _cController.SimpleMove(moving * Time.deltaTime);
         }
 
         public override void Move(Vector3 targetPoint)
@@ -93,7 +87,7 @@ namespace Character
 
         private void Attack(Vector3 attackDirection)
         {
-            //TODO: create weapon class and shoot by that object
+            //TODO: use weapon for this
             //TODO: why it's in visual presentation?
             int bulletSpeed = 3;
             Vector3 startPos = this.transform.position;

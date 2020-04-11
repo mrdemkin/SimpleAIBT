@@ -2,10 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IWeapon
+namespace Weapons
 {
-    void TryDistantAttack(Vector3 direction);
-    void TryMeleeAttack(Vector3 direction);
+    public interface IWeapon
+    {
+        GameObject TryAttack(Vector3 startPosition, Vector3 direction, string targetTag);
+        bool isCanDistantAttack
+        {
+            get;
+        }
+        bool isCanMeleeAttack
+        {
+            get;
+        }
+
+        float attackRange
+        {
+            get;
+        }
 
 
+    }
 }
