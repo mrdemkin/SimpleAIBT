@@ -9,6 +9,8 @@ public class MainManager : MonoBehaviour
     public GameObject ExitObject;
     Vector3 ExitPoint;
 
+    public string[] tagsForEnemy;
+
     private CharacterPresenter playerPresenter;
 
     private void Init()
@@ -16,7 +18,6 @@ public class MainManager : MonoBehaviour
         ExitPoint = ExitObject.transform.position;
         player.exitPoint = ExitPoint;
         playerPresenter = player._presenter;
-
     }
 
     private void Awake()

@@ -25,7 +25,7 @@ namespace Character
 			_presenter = new PlayerPresenter (this);
             _presenter.Init();
             InitComponents();
-
+			weapon = new DistantWeapon (10f);
             AIAction = _presenter.NextAction;
 #if DEBUG_MODE
             Invoke ("loweringHealth", 5f);
@@ -61,9 +61,6 @@ namespace Character
 
         public override void Move()
         {
-#if DEBUG_MODE
-			Debug.Log("Move " + exitPoint);
-#endif
             Move(exitPoint);
         }
 
@@ -80,19 +77,46 @@ namespace Character
 
         public override void Backoff()
         {
-            //TODO: Implement
             // move negative from attacked and attack enemy
 #if DEBUG_MODE
-            Debug.Log($"<color=red>Backoff</color>");
+			Debug.Log("<color=red>Backoff</color>");
 #endif
-            Attack(exitPoint);
+            //Attack(exitPoint);
+            //TODO: distance should be less then attack range!
+            Transform _tr = GetTransformToAttack();
+            if (_tr != null)
+                Attack(_tr.position);
             Move();
+        }
+
+        private Transform GetTransformToAttack()
+        {
+            return _presenter.GetNearestEnemy();
         }
 
         private void Attack(Vector3 attackDirection)
         {
             //TODO: use weapon for this
             //TODO: why it's in visual presentation?
+            Vector3 direction = (attackDirection - this.transform.position).normalized;
+            GameObject hitObj = weapon.TryAttack(this.transform.position, direction, "Enemy");
+            if (hitObj)
+            {
+                //TODO: enemy set new hp and others
+            }
+        }
+
+        private void Attack(Vector3 attackDirection, float distance)
+        {
+            //TODO: use weapon for this
+            //TODO: why it's in visual presentation?
+            if (distance > weapon.attackRange)
+            {
+#if DEBUG_MODE
+                Debug.Log("Attack range less, then distance to enemy");
+#endif
+                return;
+            }
             Vector3 direction = (attackDirection - this.transform.position).normalized;
             GameObject hitObj = weapon.TryAttack(this.transform.position, direction, "Enemy");
             if (hitObj)

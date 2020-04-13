@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Weapons
@@ -46,7 +46,7 @@ namespace Weapons
         {
             //Vector3 direction = (attackDirection - this.transform.position).normalized;
 #if DEBUG_MODE
-            Debug.DrawRay(startPosition, direction, Color.blue, 0.2f);
+            Debug.DrawRay(startPosition, direction, Color.blue, 0.8f);
 #endif
             RaycastHit hit;
                 if (Physics.Raycast(startPosition, direction, out hit, attackRange))
@@ -54,7 +54,11 @@ namespace Weapons
                     if (hit.transform.CompareTag(targetTag))
                     {
 #if DEBUG_MODE
-                        Debug.Log($"<color=red>{hit.transform.name} was hit</color>");
+					#if UNITY_2017_4_OR_NEWER
+                       	Debug.Log($"<color=red>{hit.transform.name} was hit</color>");
+					#else
+						Debug.Log("<color=red>" + hit.transform.name + " was hit</color>");
+					#endif
 #endif
                         //TODO: Draw bullet something
                         return hit.transform.gameObject;

@@ -43,6 +43,22 @@ namespace Character
             if (_isInited) return;
             _model.SetSpeed(1f);
             _isInited = true;
+			#if DEBUG_MODE
+			//TestMapScan ();
+			#endif
+        }
+
+		#if DEBUG_MODE
+		void TestMapScan() {
+			this.mapScanner.TryFindGameobject (_view.transform.position, 10f, 24, "Enemy");
+		}
+		#endif
+
+        //TODO: NO! shouldn't use UnityEngine in presenter
+        public override UnityEngine.Transform GetNearestEnemy()
+        {
+            //TODO: use tags from manager
+            return this.mapScanner.FindNearest(_view.transform.position, this.mapScanner.TryFindGameobject(_view.transform.position, 10f, 24, "Enemy"));
         }
 
         public override void Deinit()
@@ -57,7 +73,6 @@ namespace Character
 #endif
 			AI.StartAI();
 			AiActionCurrent = AI.GetNextAction(AI.rootNode.state);
-			//SetPlayerAction(AI.GetNextAction(AI.rootNode.state));
         }
 			
 		public override void SetPlayerAction() {
@@ -67,7 +82,11 @@ namespace Character
         private void SetPlayerAction(AiStates actionCode)
         {
 #if DEBUG_MODE
+#if UNITY_2017_4_OR_NEWER
             UnityEngine.Debug.Log($"SetPlayerAction {actionCode}");
+#else 
+			UnityEngine.Debug.Log("SetPlayerAction " + actionCode);
+#endif
 #endif
             switch (actionCode)
             {

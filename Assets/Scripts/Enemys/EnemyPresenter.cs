@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Character {
     public class EnemyPresenter : CharacterPresenter
@@ -15,6 +13,11 @@ namespace Character {
         public override void Deinit()
         {
 
+        }
+
+        public override Transform GetNearestEnemy()
+        {
+            throw new System.NotImplementedException();
         }
 
         public override void Init()
