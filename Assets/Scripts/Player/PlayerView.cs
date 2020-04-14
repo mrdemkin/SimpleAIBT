@@ -16,7 +16,7 @@ namespace Character
         Timer timer;
         delegate void RepeatAiAction();
         private RepeatAiAction AIAction;
-        private int RepeatAims = 2000;
+        private int RepeatAims = 1000;
         //TODO: events like jump, startAttack or something else
         //public EventHandler 
 
@@ -34,6 +34,7 @@ namespace Character
 
 #if DEBUG_MODE
         private void loweringHealth() {
+            Debug.Log("<color=blue>loweringHealth</color>");
 			_presenter.health = 20;
 		}
 #endif
@@ -64,7 +65,7 @@ namespace Character
             Move(exitPoint);
         }
 
-        public override void Move(Vector3 targetPoint)
+        private void Move(Vector3 targetPoint)
         {
             //now moving only forward
             Vector3 moveVector = targetPoint - transform.position;
@@ -75,18 +76,29 @@ namespace Character
 			_cController.Move(moving * Time.deltaTime);
         }
 
+        private void BackMove(Transform attacked)
+        {
+            _cController.Move((-GetDirectionToAttacked(attacked)) * Time.deltaTime);
+        }
+
         public override void Backoff()
         {
             // move negative from attacked and attack enemy
 #if DEBUG_MODE
 			Debug.Log("<color=red>Backoff</color>");
 #endif
-            //Attack(exitPoint);
             //TODO: distance should be less then attack range!
             Transform _tr = GetTransformToAttack();
             if (_tr != null)
+            {
                 Attack(_tr.position);
-            Move();
+                BackMove(_tr);
+            }
+        }
+
+        private Vector3 GetDirectionToAttacked(Transform attacked)
+        {
+            return (attacked.position - this.transform.position).normalized;
         }
 
         private Transform GetTransformToAttack()

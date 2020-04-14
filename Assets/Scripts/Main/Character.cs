@@ -60,7 +60,6 @@ namespace Character
             _presenter.Deinit();
         }
         public abstract void Move();
-        public abstract void Move(Vector3 targetPoint);
         public abstract void Backoff();
         public abstract void OpenAbilityShield();
     }

@@ -6,7 +6,7 @@ namespace Character
     public class PlayerModel : CharacterModel
     {
 		Timer timerUnderAttack;
-		private int revertUnderAttackTime = 1500;
+        private int revertUnderAttackTime = 1500;
 
 		private bool _underAttack;
 		private bool underAttack {
@@ -14,7 +14,9 @@ namespace Character
 				return _underAttack;
 			}
 			set {
-				timerUnderAttack.Stop();
+
+                Debug.Log($"<color=blue>underAttack {value}</color>");
+                timerUnderAttack.Stop();
 				_underAttack = value;
 				if (_underAttack == true)
 					timerUnderAttack.Start();
@@ -38,6 +40,7 @@ namespace Character
 			timerUnderAttack = new Timer (revertUnderAttackTime);
 			timerUnderAttack.AutoReset = false;
 			timerUnderAttack.Elapsed += EndUnderAttack;
+            Debug.Log($"<color=blue>END MODEL INIT</color>");
         }
 
         public override void Attack()

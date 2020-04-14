@@ -31,7 +31,7 @@ namespace Character
             throw new System.NotImplementedException();
         }
 
-        public override void Move(Vector3 targetPoint)
+        public void Move(Vector3 targetPoint)
         {
             throw new System.NotImplementedException();
         }
