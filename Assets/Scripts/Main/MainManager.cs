@@ -6,6 +6,8 @@ using UnityEngine;
 public class MainManager : MonoBehaviour
 {
     public CharacterView player;
+    //TODO: test only! Use EnemyManager, pool and attack queue
+    public CharacterView[] Enemyes;
     public GameObject ExitObject;
     Vector3 ExitPoint;
 
@@ -18,6 +20,16 @@ public class MainManager : MonoBehaviour
         ExitPoint = ExitObject.transform.position;
         player.exitPoint = ExitPoint;
         playerPresenter = player._presenter;
+
+        InitEnemyes();
+    }
+
+    private void InitEnemyes()
+    {
+        foreach (CharacterView _cv in Enemyes)
+        {
+            _cv.exitPoint = ExitPoint;
+        }
     }
 
     private void Awake()

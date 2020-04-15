@@ -23,9 +23,6 @@ namespace Character
 			InitComponents();
 			weapon = new MeleeWeapon(1f, 5f);
 			AIAction = _presenter.NextAction;
-			#if DEBUG_MODE
-			Invoke ("loweringHealth", 5f);
-			#endif
 		}
 
 		private void Start()

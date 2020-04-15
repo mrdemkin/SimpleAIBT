@@ -52,8 +52,15 @@ namespace Character {
         }
 
 		public override void NextAction()
-		{
-			AI.StartAI();
+        {
+#if DEBUG_MODE
+#if UNITY_2017_4_OR_NEWER
+            UnityEngine.Debug.Log($"<color=red>!!!!WENEMY NextAction</color>");
+#else
+			UnityEngine.Debug.Log("SetPlayerAction " + actionCode);
+#endif
+#endif
+            AI.StartAI();
 			AiActionCurrent = AI.GetNextAction(AI.rootNode.state);
 		}
 
@@ -65,7 +72,7 @@ namespace Character {
 		{
 			#if DEBUG_MODE
 			#if UNITY_2017_4_OR_NEWER
-			UnityEngine.Debug.Log($"SetPlayerAction {actionCode}");
+			UnityEngine.Debug.Log($"<color=red>!!!!WENEMY SetPlayerAction {actionCode}</color>");
 			#else 
 			UnityEngine.Debug.Log("SetPlayerAction " + actionCode);
 			#endif
