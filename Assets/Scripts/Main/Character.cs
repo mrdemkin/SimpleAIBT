@@ -96,7 +96,7 @@ namespace Character
         }*/
 
         public abstract void NextAction();
-		public abstract void SetPlayerAction ();
+		public abstract void SetAction ();
         public abstract UnityEngine.Transform GetNearestEnemy();
         //public abstract void InitAI();
     }

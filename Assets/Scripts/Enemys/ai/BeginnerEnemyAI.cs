@@ -7,6 +7,8 @@ public class BeginnerEnemyAI : BaseEnemyAiClass
 {
 	CharacterModel enemyModel;
 
+	public SelectorNode rootNode;
+
 	public BeginnerEnemyAI(CharacterModel model) {
 		this.enemyModel = model;
 	}

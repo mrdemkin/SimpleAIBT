@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using BaseAI;
 using MapScanner;
+using Weapons;
 
 namespace Character
 {
@@ -75,7 +76,7 @@ namespace Character
 			AiActionCurrent = AI.GetNextAction(AI.rootNode.state);
         }
 			
-		public override void SetPlayerAction() {
+		public override void SetAction() {
 			SetPlayerAction (AiActionCurrent);
 		}
 
@@ -95,13 +96,23 @@ namespace Character
                     //stop
                     break;
                 case AiStates.Move:
-                    _view.Move();
+					this.SendMoveAction();
                     break;
                 case AiStates.Backoff:
                 case AiStates.CounterAttack:
-                    _view.Backoff();
+					this.SendBackoffAction();
                     break;
             }
         }
+
+
+		//TODO: interface IMovebaleByAi
+		private void SendMoveAction() {
+			_view.Move ();
+		}
+
+		private void SendBackoffAction() {
+			_view.Backoff ();
+		}
     }
 }

@@ -31,7 +31,11 @@ namespace MapScanner
                     if (hit.transform.CompareTag(tag))
                     {
 #if DEBUG_MODE
+						#if UNITY_2017_4_OR_NEWER
                         Debug.Log($"FINDED {hit.transform.gameObject.name}");
+						#else
+						Debug.Log("FINDED " + hit.transform.gameObject.name);
+						#endif
 #endif
                         findedList.Add(hit.transform);
                     }

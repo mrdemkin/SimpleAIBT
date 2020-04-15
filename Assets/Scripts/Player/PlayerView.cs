@@ -144,7 +144,7 @@ namespace Character
 
 		private void Update() {
             if (_presenter.isCanActivateAiAction) {
-				_presenter.SetPlayerAction ();
+				_presenter.SetAction ();
 			}
         }
 

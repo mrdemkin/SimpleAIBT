@@ -14,8 +14,6 @@ namespace Character
 				return _underAttack;
 			}
 			set {
-
-                Debug.Log($"<color=blue>underAttack {value}</color>");
                 timerUnderAttack.Stop();
 				_underAttack = value;
 				if (_underAttack == true)
@@ -40,7 +38,6 @@ namespace Character
 			timerUnderAttack = new Timer (revertUnderAttackTime);
 			timerUnderAttack.AutoReset = false;
 			timerUnderAttack.Elapsed += EndUnderAttack;
-            Debug.Log($"<color=blue>END MODEL INIT</color>");
         }
 
         public override void Attack()
