@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Weapons;
 
 namespace Character
 {
@@ -15,6 +16,8 @@ namespace Character
         public bool canMove;
         public bool canMeleeAttack;
         public bool canDistantAttack;
+        public float weaponAttackRange;
+		public float distanceToTarget;
         public bool isInited;
 
         public abstract void Init();
@@ -36,6 +39,7 @@ namespace Character
 		// TODO: new class absctract BasicPlayerView?
 		[HideInInspector]
 		public Vector3 exitPoint;
+        public IWeapon weapon;
         // TODO: show in inspector non-public?
         //public Rigidbody _rb;
         //public Collider _collider;
@@ -61,6 +65,7 @@ namespace Character
         }
         public abstract void Move();
         public abstract void Backoff();
+        public abstract void ScanMap();
         public abstract void OpenAbilityShield();
     }
 
@@ -71,6 +76,7 @@ namespace Character
         [HideInInspector]
         public bool _isInited;
 		public bool isCanActivateAiAction;
+        public float AttackRange;
         public abstract void Init();
         public abstract void Deinit();
 
@@ -87,6 +93,18 @@ namespace Character
         public float speed
         {
             get { return _model.speed; }
+        }
+
+        public float distanceToTarget
+        {
+            get
+            {
+                return _model.distanceToTarget;
+            }
+            set
+            {
+                _model.distanceToTarget = value;
+            }
         }
 
         // TODO: Need getter

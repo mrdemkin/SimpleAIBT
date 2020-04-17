@@ -96,6 +96,11 @@ namespace Character
             }
         }
 
+        public override void ScanMap()
+        {
+            //TODO: need for enemy, but ni player.. for why?
+        }
+
         private Vector3 GetDirectionToAttacked(Transform attacked)
         {
             return (attacked.position - this.transform.position).normalized;

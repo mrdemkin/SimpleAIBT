@@ -26,7 +26,7 @@ namespace BT
             //UnityEngine.Debug.Log($"ActionNode Constructor {actionMethod.GetType().Name}");
 #endif
             this.action = actionMethod;
-            this._nodeName = name;
+            this.Name = name;
         }
 
         public override States Evaluate()
@@ -51,12 +51,18 @@ namespace BT
                     _state = States.SUCCESS;
                     return state;
                 case States.FAILED:
+#if DEBUG_MODE
+                    UnityEngine.Debug.Log($"ActionNode FAILED {this.Name}");
+#endif
                     _state = States.FAILED;
                     return state;
                 case States.EXECUTED:
                     _state = States.EXECUTED;
                     return state;
                 default:
+#if DEBUG_MODE
+                    UnityEngine.Debug.Log($"ActionNode DEFAULT {this.Name}");
+#endif
                     _state = States.FAILED;
                     return state;
             }

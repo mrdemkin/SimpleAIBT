@@ -5,12 +5,16 @@ namespace BT
 {
     public abstract class Node
     {
-        public string _nodeName = string.Empty;
+        private string _nodeName = string.Empty;
         public string Name
         {
             get
             {
                 return _nodeName;
+            }
+            set
+            {
+                _nodeName = value;
             }
         }
         public delegate States NodeReturn();

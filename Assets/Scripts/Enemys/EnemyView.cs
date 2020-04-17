@@ -8,9 +8,6 @@ namespace Character
 {
     public class EnemyView : CharacterView
 	{
-		//TODO: This not for visual presentation!
-		MeleeWeapon weapon;
-
 		Timer timer;
 		delegate void RepeatAiAction();
 		private RepeatAiAction AIAction;
@@ -49,6 +46,14 @@ namespace Character
 				BackMove(_tr);
 			}
 		}
+
+        public override void ScanMap()
+        {
+            Transform _tr = GetTransformToAttack();
+            if (_tr != null) { 
+                exitPoint = _tr.position;
+            }
+        }
 
 		private void Move(Vector3 targetPoint)
 		{

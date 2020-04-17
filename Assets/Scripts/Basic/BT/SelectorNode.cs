@@ -9,6 +9,12 @@ namespace BT
         //child for selector
         protected List<Node> cNodes = new List<Node>();
 
+		public int Count {
+			get {
+				return cNodes.Count;
+			}
+		}
+
         public SelectorNode(List<Node> childNodes)
         {
             this.cNodes = childNodes;
@@ -17,14 +23,13 @@ namespace BT
         public SelectorNode(List<Node> childNodes, string name)
         {
             this.cNodes = childNodes;
-            this._nodeName = name;
+            this.Name = name;
         }
 
         //any of nodes is success - success. If ALL nodes is failed - return fail
         public override States Evaluate()
         {
 #if DEBUG_MODE
-            //UnityEngine.Debug.Log($"SelectorNode 0");
 			UnityEngine.Debug.Log("SelectorNode 0");
 #endif
             foreach (Node node in cNodes)
@@ -57,6 +62,10 @@ namespace BT
                         _state = States.EXECUTED;
                         return _state;
                     default:
+					#if DEBUG_MODE
+					//UnityEngine.Debug.Log($"SelectorNode {this.Name} EXECUTED on {node.Name}");
+					UnityEngine.Debug.Log("PIAZDETC");
+					#endif
                         //continue;
 							break;
                 }

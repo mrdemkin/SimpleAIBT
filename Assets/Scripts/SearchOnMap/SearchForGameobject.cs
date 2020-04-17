@@ -73,7 +73,7 @@ namespace MapScanner
             return nearestTransform;
         }
 
-        private float LengthBetween(Vector3 A, Vector3 B)
+        public float LengthBetween(Vector3 A, Vector3 B)
         {
             return Mathf.Sqrt(((B.x - A.x) * (B.x - A.x)) + ((B.y - A.y) * (B.y - A.y)) + ((B.z - A.z) * (B.z - A.z)));
         }

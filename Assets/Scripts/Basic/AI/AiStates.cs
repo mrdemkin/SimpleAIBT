@@ -4,6 +4,7 @@
 	{
 		Idle,
 		Move,
+        ScanMap,
 		Run,
 		Attack,
 		CounterAttack,

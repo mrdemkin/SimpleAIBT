@@ -36,9 +36,9 @@ namespace BaseAI
             return cModel.isUnderAttack() ? States.SUCCESS : States.FAILED;
         }
 
-        BT.States isNotUnderAttack()
+        public BT.States isNotUnderAttack()
         {
-            return (isUnderAttack() == States.SUCCESS) ? States.FAILED : States.SUCCESS;
+            return cModel.isUnderAttack() ? States.FAILED : States.SUCCESS;
         }
 
         public BT.States canMoveAction()

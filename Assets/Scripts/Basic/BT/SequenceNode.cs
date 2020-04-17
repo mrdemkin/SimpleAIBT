@@ -8,6 +8,12 @@ namespace BT
     {
         protected List<Node> cNodes = new List<Node>();
 
+		public int Count {
+			get {
+				return cNodes.Count;
+			}
+		}
+
         public SequenceNode(List<Node> childNodes)
         {
             this.cNodes = childNodes;
@@ -16,7 +22,7 @@ namespace BT
         public SequenceNode(List<Node> childNodes, string name)
         {
             this.cNodes = childNodes;
-            this._nodeName = name;
+            this.Name = name;
         }
 
         //if any of node failed - failed. If all nodes is success - success
@@ -29,8 +35,9 @@ namespace BT
 #endif
             foreach (Node node in cNodes)
             {
+                UnityEngine.Debug.Log("Sequence node 1");
 #if DEBUG_MODE
-                UnityEngine.Debug.Log("Sequence node " +node.Name);
+                UnityEngine.Debug.Log("Sequence node 1 " + node.Name);
 #endif
                 switch (node.Evaluate())
                 {
